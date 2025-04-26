@@ -1,0 +1,77 @@
+<Experiment>
+  <Name>Example Experiment</Name>
+  <Date>2025-23-04</Date>
+  <id>1.0</id>
+  <Operator>
+      <Name>Example Operator</Name>
+  </Operator>
+  <Participant>
+      <Name>Example Participant</Name>
+  </Participant>
+  <!-- F4.1.1: Trial Home Position -->
+  <HomePosition>
+    <Position x="0.0" y="0.0" z="0.0"/>
+    <Tolerance>0.01</Tolerance>
+  </HomePosition>
+
+  <!-- F4.1.2: Trial End Conditions -->
+  <EndConditions>
+    <Condition type="position" result="success">
+      <Position x="0.1" y="0.2" z="0.3"/>
+      <Tolerance>0.01</Tolerance>
+    </Condition>
+    <Condition type="time" value="10.0" result="failure" />
+    <Condition type="velocity" result="failure">
+      <MaxVelocity>0.5</MaxVelocity>
+    </Condition>
+  </EndConditions>
+
+  <!-- F4.1.3: HUD Text -->
+  <HUDText>
+    <StartMessage>Move the cursor to the target as quickly and accurately as possible.</StartMessage>
+    <SuccessMessage>Well done!</SuccessMessage>
+    <FailureMessage>Try again.</FailureMessage>
+  </HUDText>
+
+  <!-- F4.1.4: Scene Settings -->
+  <SceneSettings>
+    <BackgroundColor r="0.2" g="0.2" b="0.2" />
+    <Camera>
+      <Position x="1.0" y="1.0" z="2.0"/>
+      <LookAt x="0.0" y="0.0" z="0.0"/>
+      <Up x="0.0" y="1.0" z="0.0"/>
+    </Camera>
+  </SceneSettings>
+
+  <!-- F4.1.5: Scene Objects -->
+  <Objects>
+    <Object id="cursor" type="sphere">
+      <Position x="0.0" y="0.0" z="0.0"/>
+      <Orientation roll="0" pitch="0" yaw="0"/>
+      <Size radius="0.01"/>
+      <Color r="1.0" g="0.0" b="0.0"/>
+    </Object>
+
+    <Object id="target" type="box">
+      <Position x="0.1" y="0.2" z="0.3"/>
+      <Orientation roll="0" pitch="0" yaw="0"/>
+      <Size width="0.02" height="0.02" depth="0.02"/>
+      <Color r="0.0" g="1.0" b="0.0"/>
+    </Object>
+
+    <Object id="boundary" type="cylinder">
+      <Position x="0.0" y="0.0" z="0.0"/>
+      <Orientation roll="90" pitch="0" yaw="0"/>
+      <Size radius="0.5" height="0.01"/>
+      <Color r="0.5" g="0.5" b="0.5"/>
+    </Object>
+
+    <!-- Example of a custom mesh -->
+    <Object id="obstacle" type="custom">
+      <File>models/obstacle.obj</File>
+      <Position x="0.05" y="0.0" z="0.0"/>
+      <Orientation roll="0" pitch="45" yaw="0"/>
+      <Scale x="1.0" y="1.0" z="1.0"/>
+    </Object>
+  </Objects>
+</Experiment>
